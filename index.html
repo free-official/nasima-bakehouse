@@ -150,20 +150,22 @@ orderForm.addEventListener("submit",async e=>{
 function startCakeOrder(name){openChat();input.value="I am interested in the "+name+" cake design. I would like to place an order. Please guide me through the details.";input.focus();}
 function add(text,who){const el=document.createElement("div");el.className="msg "+who;el.textContent=text;list.appendChild(el);list.scrollTop=list.scrollHeight}
 form.addEventListener("submit",async e=>{e.preventDefault();const text=input.value.trim();if(!text)return;input.value="";add(text,"user");history.push({role:"user",content:text});const wait=document.createElement("div");wait.className="msg bot";wait.textContent="One moment, please...";list.appendChild(wait);list.scrollTop=list.scrollHeight;try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:history})});const d=await r.json();wait.remove();let answer=d.reply||d.error||"Sorry, I could not respond just now. Please try again.";
-const ready=answer.match(/\\[\\[ORDER_READY\\]\\]([\\s\\S]*?)\\[\\[\\/ORDER_READY\\]\\]/);
+const startMarker="[[ORDER_READY]]",endMarker="[[/ORDER_READY]]";
+const start=answer.indexOf(startMarker),end=answer.indexOf(endMarker);
+const ready=start>=0&&end>start?{raw:answer.slice(start,end+endMarker.length),json:answer.slice(start+startMarker.length,end)}:null;
 if(ready){
  try{
-  const order=JSON.parse(ready[1]);
+  const order=JSON.parse(ready.json);
   for(const [key,value] of Object.entries({name:order.name,phone:order.phone,flavour:order.flavour,pounds:order.pounds,date:order.date,time:order.time,fulfilment:order.fulfilment,address:order.address,notes:order.notes})){
    const field=orderForm.elements.namedItem(key);if(field&&typeof value==="string")field.value=value;
   }
   addressField.required=order.fulfilment==="Home delivery";
-  answer=answer.replace(ready[0],"").trim();
+  answer=answer.replace(ready.raw,"").trim();
   add(answer,"bot");
   const action=document.createElement("a");action.href="#place-order";action.className="chat-order-action";action.textContent="Review your order & send on WhatsApp";
   action.addEventListener("click",()=>{document.getElementById("place-order").scrollIntoView({behavior:"smooth"});document.getElementById("order-status").textContent="NASIMA AI থেকে পাওয়া তথ্যগুলো যাচাই করুন, প্রয়োজন হলে সংশোধন করুন, তারপর WhatsApp-এ অর্ডার পাঠান।"});
   list.appendChild(action);list.scrollTop=list.scrollHeight;
- }catch{add(answer.replace(ready[0],"").trim()+"\\nPlease use the order form below to submit your details.","bot")}
+ }catch{add(answer.replace(ready.raw,"").trim()+"\\nPlease use the order form below to submit your details.","bot")}
 }else add(answer,"bot");
 history.push({role:"assistant",content:answer})}catch{wait.remove();add("I cannot connect right now. Please try again shortly.","bot")}});
 
