@@ -44,6 +44,16 @@ body:before{content:"";position:fixed;z-index:1000;top:0;left:0;width:100%;heigh
 .btn,#chat-launch{transition:background .25s,border-color .25s,color .25s,transform .25s,box-shadow .25s}
 #chat-launch{animation:chatPulse 3s ease-in-out 2s infinite}
 @keyframes chatPulse{0%,100%{box-shadow:0 8px 30px #0003}50%{box-shadow:0 8px 34px #b69a6270,0 0 0 7px #b69a6220}}
+
+.order-panel{background:var(--ivory);border:1px solid var(--line);padding:28px;max-width:820px;margin:0 auto}
+.order-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.order-form label{display:grid;gap:7px;font-size:11px;font-weight:700;color:#444}
+.order-form input,.order-form select,.order-form textarea{width:100%;border:1px solid #ddd;background:white;padding:13px;font:13px var(--sans);color:#222;min-width:0}
+.order-form textarea{min-height:90px;resize:vertical}.order-form .wide{grid-column:1/-1}
+.order-form button{grid-column:1/-1;min-height:48px}
+.order-hint{font-size:11px;line-height:1.7;color:#666;margin:12px 0 0}
+@media(max-width:520px){.order-panel{padding:18px}.order-form{grid-template-columns:1fr}.order-form .wide{grid-column:auto}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important}}
 
 
@@ -61,6 +71,26 @@ body:before{content:"";position:fixed;z-index:1000;top:0;left:0;width:100%;heigh
 <section class="section"><div class="section-head"><div class="kicker">THE NASIMA EXPERIENCE</div><h2>Made to make your moments matter.</h2></div><div class="features"><div class="feature"><b>Care in every detail</b><p>We aim to make every cake feel special, from flavour selection to the finishing touches.</p></div><div class="feature"><b>Your idea, your design</b><p>Tell us what you have in mind. Custom design requests are reviewed and priced individually.</p></div><div class="feature"><b>Helpful order guidance</b><p>NASIMA AI can guide you through flavours, starting prices and the information needed for an order enquiry.</p></div></div></section>
 <section class="section" id="ordering"><div class="section-head"><div class="kicker">A SIMPLE ORDER JOURNEY</div><h2>How to order your cake.</h2><p>Start a conversation and tell us what you are planning. The bakery will confirm the final details before accepting your order.</p></div><div class="steps"><div class="step"><strong>01</strong><h3>Choose your cake</h3><p>Select a flavour, pound size and preferred design or share a reference image.</p></div><div class="step"><strong>02</strong><h3>Share your details</h3><p>Tell us your name, contact number, required date, design notes and delivery or pickup preference.</p></div><div class="step"><strong>03</strong><h3>Get confirmation</h3><p>The bakery checks availability and confirms the final price and order arrangements with you.</p></div></div></section>
 <section class="section" id="policies"><div class="section-head"><div class="kicker">PLEASE READ</div><h2>Order information & policies.</h2><p>Clear information helps us understand your request and avoid confusion.</p></div><div class="policy-grid"><article class="policy"><h3>Pricing</h3><p>Listed prices are per pound for the stated flavours. Custom design charges vary by design and complexity. The bakery confirms the final quotation before accepting an order.</p></article><article class="policy"><h3>Order confirmation</h3><p>A chat or enquiry is not a confirmed order. Your order is accepted only after the bakery confirms availability, final price and arrangements.</p></article><article class="policy"><h3>Custom designs</h3><p>Share your preferred theme, wording, colours or reference photo. The bakery will review the request and advise whether it can be made and the applicable charge.</p></article><article class="policy"><h3>Timing & collection</h3><p>Please share your required date and time as early as possible. Preparation time, delivery availability and collection arrangements must be confirmed with the bakery.</p></article><article class="policy"><h3>Changes & cancellation</h3><p>Contact the bakery as soon as possible if you need to change or cancel a request. Any applicable terms will be confirmed when the order is discussed.</p></article><article class="policy"><h3>Privacy</h3><p>Contact and order details shared with us are used to respond to your enquiry and coordinate your cake order. Please do not share passwords, OTPs or payment card details.</p></article></div></section>
+
+<section class="section" id="place-order">
+ <div class="section-head"><div class="kicker">PLACE AN ORDER</div><h2>Tell us what you'd love.</h2><p>Submit your cake details and send the order directly to NASIMA BAKEHOUSE on WhatsApp. The bakery will confirm availability and the final price.</p></div>
+ <div class="order-panel">
+  <form class="order-form" id="order-form">
+   <label>আপনার নাম<input name="name" required maxlength="80" placeholder="নাম লিখুন"></label>
+   <label>মোবাইল নম্বর<input name="phone" required maxlength="20" inputmode="tel" placeholder="01XXXXXXXXX"></label>
+   <label>কেকের ফ্লেভার<select name="flavour" required><option value="">নির্বাচন করুন</option><option>Vanilla</option><option>Chocolate</option><option>Custom design</option></select></label>
+   <label>কত পাউন্ড?<select name="pounds" required><option value="">নির্বাচন করুন</option><option>1 pound</option><option>2 pounds</option><option>3 pounds</option><option>4 pounds</option><option>5 pounds</option><option>To be discussed</option></select></label>
+   <label>কবে প্রয়োজন?<input name="date" type="date" required></label>
+   <label>সময় (ঐচ্ছিক)<input name="time" type="time"></label>
+   <label>অর্ডার নেওয়ার পদ্ধতি<select name="fulfilment" id="fulfilment" required><option value="">নির্বাচন করুন</option><option value="Home delivery">Home delivery</option><option value="Pickup">নিজে এসে নিয়ে যাব</option></select></label>
+   <label id="address-wrap">ডেলিভারি ঠিকানা<input name="address" id="order-address" maxlength="250" placeholder="ডেলিভারি হলে ঠিকানা লিখুন"></label>
+   <label class="wide">ডিজাইন / কেকের ওপর কী লিখবেন? <textarea name="notes" maxlength="1000" placeholder="ডিজাইনের বিবরণ, লেখা, রং বা বিশেষ নির্দেশনা"></textarea></label>
+   <button class="btn" type="submit">WHATSAPP-এ অর্ডার পাঠান</button>
+  </form>
+  <p class="order-hint" id="order-status">অর্ডার পাঠানোর পর WhatsApp খুলবে। সেখানে Send চাপলে আপনার অর্ডার বেকারির কাছে যাবে। অর্ডার নিশ্চিত হবে বেকারির সঙ্গে কথা বলে।</p>
+ </div>
+</section>
+
 <section class="contact" id="contact"><div class="contact-inner"><div><div class="eyebrow">LET'S MAKE SOMETHING SWEET</div><h2>Your next celebration<br>starts here.</h2><p>Talk to NASIMA AI about flavours, cake sizes, designs and order enquiries.</p><button class="btn" onclick="openChat()">CHAT WITH NASIMA AI</button></div><div class="contact-details"><div><span>PHONE</span><a href="tel:01721458016">01721458016</a></div><div><span>LOCATION</span>Pollanpur More</div><div><span>BUSINESS</span>NASIMA BAKEHOUSE</div><div><span>HOURS</span>Please contact us to confirm availability.</div></div></div></section>
 </main><footer><div class="footer-brand"><span class="footer-mark">N</span><span class="footer-logo">NASIMA BAKEHOUSE</span></div><div>BAKED WITH LOVE · CRAFTED WITH PASSION</div><div>© <span id="year"></span> NASIMA BAKEHOUSE. ALL RIGHTS RESERVED.</div></footer>
 <section id="chat" aria-label="NASIMA AI chat"><div class="chat-head"><div class="chat-title">NASIMA AI <small>Your cake assistant · Ask us anything</small></div><button class="chat-close" type="button" onclick="closeChat()" aria-label="Close chat" title="Close chat">×</button></div><div class="messages" id="messages"><div class="msg bot">Hello! Welcome to NASIMA BAKEHOUSE. I can help with flavours, prices, cake sizes, custom designs and order enquiries. What would you like to know?</div></div><form class="composer" id="form"><input id="input" maxlength="1000" placeholder="Type your message..." autocomplete="off" required><button type="submit">SEND</button></form></section><button id="chat-launch" onclick="openChat()">✦ CHAT WITH NASIMA AI</button>
@@ -72,6 +102,44 @@ document.getElementById("gallery").innerHTML=designs.map(([name,id])=>'<article 
 document.getElementById("year").textContent=new Date().getFullYear();
 const panel=document.getElementById("chat"),input=document.getElementById("input"),list=document.getElementById("messages"),form=document.getElementById("form"),history=[];
 function openChat(){panel.classList.add("open");document.getElementById("chat-launch").setAttribute("aria-expanded","true");input.focus()}\nfunction closeChat(){panel.classList.remove("open");document.getElementById("chat-launch").setAttribute("aria-expanded","false");document.getElementById("chat-launch").focus()}\ndocument.addEventListener("keydown",e=>{if(e.key==="Escape"&&panel.classList.contains("open"))closeChat()});
+
+const orderForm=document.getElementById("order-form");
+const fulfilmentSelect=document.getElementById("fulfilment");
+const addressField=document.getElementById("order-address");
+fulfilmentSelect.addEventListener("change",()=>{
+ const delivery=fulfilmentSelect.value==="Home delivery";
+ addressField.required=delivery;
+ addressField.placeholder=delivery?"সম্পূর্ণ ডেলিভারি ঠিকানা লিখুন":"ডেলিভারি হলে ঠিকানা লিখুন";
+});
+orderForm.addEventListener("submit",async e=>{
+ e.preventDefault();
+ const data=Object.fromEntries(new FormData(orderForm).entries());
+ if(data.fulfilment==="Home delivery"&&!data.address.trim()){addressField.focus();return}
+ const order={...data,orderId:"NB-"+Date.now(),createdAt:new Date().toISOString(),status:"Pending confirmation"};
+ try{
+  const saved=JSON.parse(localStorage.getItem("nasima_order_outbox")||"[]");
+  saved.push(order);localStorage.setItem("nasima_order_outbox",JSON.stringify(saved.slice(-100)));
+ }catch{}
+ const lines=[
+  "নতুন অর্ডার — NASIMA BAKEHOUSE",
+  "অর্ডার আইডি: "+order.orderId,
+  "নাম: "+data.name,
+  "মোবাইল: "+data.phone,
+  "ফ্লেভার: "+data.flavour,
+  "পরিমাণ: "+data.pounds,
+  "তারিখ: "+data.date,
+  "সময়: "+(data.time||"উল্লেখ নেই"),
+  "পদ্ধতি: "+data.fulfilment,
+  "ঠিকানা: "+(data.address||"Pickup"),
+  "ডিজাইন/নোট: "+(data.notes||"নেই"),
+  "দয়া করে অর্ডারটি যাচাই করে নিশ্চিত করবেন।"
+ ];
+ const status=document.getElementById("order-status");
+ status.textContent="অর্ডার প্রস্তুত। WhatsApp খুলছে—সেখানে Send চাপুন।";
+ const wa="https://wa.me/8801571507618?text="+encodeURIComponent(lines.join("\n"));
+ window.open(wa,"_blank","noopener");
+});
+
 function startCakeOrder(name){openChat();input.value="I am interested in the "+name+" cake design. I would like to place an order. Please guide me through the details.";input.focus();}
 function add(text,who){const el=document.createElement("div");el.className="msg "+who;el.textContent=text;list.appendChild(el);list.scrollTop=list.scrollHeight}
 form.addEventListener("submit",async e=>{e.preventDefault();const text=input.value.trim();if(!text)return;input.value="";add(text,"user");history.push({role:"user",content:text});const wait=document.createElement("div");wait.className="msg bot";wait.textContent="One moment, please...";list.appendChild(wait);list.scrollTop=list.scrollHeight;try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:history})});const d=await r.json();wait.remove();const answer=d.reply||d.error||"Sorry, I could not respond just now. Please try again.";add(answer,"bot");history.push({role:"assistant",content:answer})}catch{wait.remove();add("I cannot connect right now. Please try again shortly.","bot")}});
