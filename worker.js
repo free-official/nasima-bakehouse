@@ -38,6 +38,37 @@ export default {
     };
     if (request.method === "OPTIONS") return new Response(null, { headers: cors });
     const url = new URL(request.url);
+    if (url.pathname === "/api/orders") {
+      if (!env.ORDERS_DB) return Response.json({ error: "Order storage is not configured yet." }, { status: 503, headers: cors });
+      if (request.method === "POST") {
+        try {
+          const order = await request.json();
+          const required = ["orderId","name","phone","flavour","pounds","date","fulfilment"];
+          if (required.some(k => !order[k] || typeof order[k] !== "string")) {
+            return Response.json({ error: "Missing required order details." }, { status: 400, headers: cors });
+          }
+          await env.ORDERS_DB.prepare(
+            "INSERT INTO orders (order_id, customer_name, phone, flavour, pounds, required_date, required_time, fulfilment, address, notes, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+          ).bind(order.orderId, order.name.slice(0,80), order.phone.slice(0,20), order.flavour.slice(0,60), order.pounds.slice(0,30), order.date.slice(0,20), String(order.time || "").slice(0,20), order.fulfilment.slice(0,30), String(order.address || "").slice(0,250), String(order.notes || "").slice(0,1000), "Pending confirmation", new Date().toISOString()).run();
+          return Response.json({ ok: true, orderId: order.orderId }, { headers: cors });
+        } catch {
+          return Response.json({ error: "Could not save this order. Please send it by WhatsApp." }, { status: 500, headers: cors });
+        }
+      }
+      if (request.method === "GET") {
+        const token = request.headers.get("Authorization") || "";
+        if (!env.ADMIN_TOKEN || token !== "Bearer " + env.ADMIN_TOKEN) {
+          return Response.json({ error: "Unauthorized" }, { status: 401, headers: cors });
+        }
+        try {
+          const result = await env.ORDERS_DB.prepare("SELECT order_id, customer_name, phone, flavour, pounds, required_date, required_time, fulfilment, address, notes, status, created_at FROM orders ORDER BY created_at DESC LIMIT 300").all();
+          return Response.json({ orders: result.results || [] }, { headers: cors });
+        } catch {
+          return Response.json({ error: "Could not load orders." }, { status: 500, headers: cors });
+        }
+      }
+      return new Response("Method Not Allowed", { status: 405, headers: cors });
+    }
     if (url.pathname !== "/api/chat") return env.ASSETS.fetch(request);
     if (request.method !== "POST") return new Response("Method Not Allowed", { status: 405, headers: cors });
     if (!env.GROQ_API_KEY) {
