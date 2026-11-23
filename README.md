@@ -14,3 +14,6 @@ Starter website and Groq-powered customer chat assistant.
 
 ## Important
 This is an initial integration scaffold. Product catalog, confirmed prices, delivery zones, WhatsApp order forwarding, order storage, rate limiting, and final deployment still need configuration and testing. The assistant is instructed not to invent missing business information or claim an order is confirmed.
+
+## Deployment
+Cloudflare Workers Builds is connected to this repository. Push changes to the `main` branch to trigger a production build. The Worker entry point is `worker.js`, and the static site is served from the repository root as configured in `wrangler.jsonc`.
