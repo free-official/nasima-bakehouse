@@ -17,3 +17,6 @@ This is an initial integration scaffold. Product catalog, confirmed prices, deli
 
 ## Deployment
 Cloudflare Workers Builds is connected to this repository. Push changes to the `main` branch to trigger a production build. The Worker entry point is `worker.js`, and the static site is served from the repository root as configured in `wrangler.jsonc`.
+
+## Build trigger check
+A small documentation update to trigger the first Cloudflare Workers Builds run from the connected `main` branch.
