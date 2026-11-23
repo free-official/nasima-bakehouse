@@ -15,8 +15,11 @@ export default {
     };
     if (request.method === "OPTIONS") return new Response(null, { headers: cors });
     const url = new URL(request.url);
-    if (url.pathname !== "/api/chat" || request.method !== "POST") {
-      return new Response("NASIMA BAKEHOUSE AI API", { headers: cors });
+    if (url.pathname !== "/api/chat") {
+      return env.ASSETS.fetch(request);
+    }
+    if (request.method !== "POST") {
+      return new Response("Method Not Allowed", { status: 405, headers: cors });
     }
     if (!env.GROQ_API_KEY) {
       return Response.json({ error: "AI is not configured yet. Bakery support will be available soon." }, { status: 503, headers: cors });
