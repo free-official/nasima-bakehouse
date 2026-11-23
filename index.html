@@ -136,6 +136,11 @@ orderForm.addEventListener("submit",async e=>{
  ];
  const status=document.getElementById("order-status");
  status.textContent="অর্ডার প্রস্তুত। WhatsApp খুলছে—সেখানে Send চাপুন।";
+ fetch("/api/orders",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(order)})
+  .then(r=>r.json()).then(result=>{
+   if(result.ok)status.textContent="অর্ডার তালিকায় সংরক্ষিত হয়েছে। WhatsApp-এ Send চাপলে বিক্রেতার কাছে যাবে।";
+   else status.textContent="WhatsApp-এ অর্ডার পাঠান। কেন্দ্রীয় অর্ডার তালিকা এখনো সেটআপ করা হয়নি।";
+  }).catch(()=>{status.textContent="WhatsApp-এ Send চাপুন। অর্ডারের অনলাইন সংরক্ষণে সমস্যা হয়েছে।"});
  const wa="https://wa.me/8801571507618?text="+encodeURIComponent(lines.join("\n"));
  window.open(wa,"_blank","noopener");
 });
