@@ -101,7 +101,9 @@ const designs=[
 document.getElementById("gallery").innerHTML=designs.map(([name,id])=>'<article class="cake-card"><img loading="lazy" src="https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=650&q=78" alt="'+name+' cake design"><div class="cake-label">'+name+'</div><button class="cake-order" type="button" data-cake="'+name+'" onclick="startCakeOrder(this.dataset.cake)">ORDER THIS CAKE</button></article>').join("");
 document.getElementById("year").textContent=new Date().getFullYear();
 const panel=document.getElementById("chat"),input=document.getElementById("input"),list=document.getElementById("messages"),form=document.getElementById("form"),history=[];
-function openChat(){panel.classList.add("open");document.getElementById("chat-launch").setAttribute("aria-expanded","true");input.focus()}\nfunction closeChat(){panel.classList.remove("open");document.getElementById("chat-launch").setAttribute("aria-expanded","false");document.getElementById("chat-launch").focus()}\ndocument.addEventListener("keydown",e=>{if(e.key==="Escape"&&panel.classList.contains("open"))closeChat()});
+function openChat(){panel.classList.add("open");document.getElementById("chat-launch").setAttribute("aria-expanded","true");input.focus()}
+function closeChat(){panel.classList.remove("open");document.getElementById("chat-launch").setAttribute("aria-expanded","false");document.getElementById("chat-launch").focus()}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&panel.classList.contains("open"))closeChat()});
 
 const orderForm=document.getElementById("order-form");
 const fulfilmentSelect=document.getElementById("fulfilment");
