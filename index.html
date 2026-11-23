@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NASIMA BAKEHOUSE</title>
+<style>
+:root{--berry:#8e3155;--cream:#fff8f2;--ink:#34232b}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif;background:var(--cream);color:var(--ink)}header{padding:24px 7%;background:#fff;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 18px #48203212}header strong{font-size:1.2rem;letter-spacing:.08em;color:var(--berry)}main{max-width:900px;margin:70px auto;padding:24px;text-align:center}h1{font-size:clamp(2rem,6vw,3.8rem);color:var(--berry);margin-bottom:12px}main p{font-size:1.1rem;line-height:1.8}.tag{display:inline-block;padding:8px 14px;border-radius:30px;background:#f4e4eb;color:var(--berry)}#chat-launch{position:fixed;right:22px;bottom:22px;border:0;border-radius:50px;background:var(--berry);color:white;padding:15px 20px;font-size:16px;box-shadow:0 8px 28px #4a193344;cursor:pointer}#chat{position:fixed;right:22px;bottom:85px;width:min(370px,calc(100vw - 28px));height: min(540px,calc(100dvh - 120px));background:white;border-radius:18px;box-shadow:0 12px 50px #2d142533;display:none;overflow:hidden;flex-direction:column}#chat.open{display:flex}.chat-head{background:var(--berry);color:white;padding:16px;font-weight:700}.chat-head small{display:block;font-weight:400;opacity:.9;margin-top:3px}.messages{padding:14px;flex:1;overflow:auto;background:#fffaf7}.msg{max-width:88%;padding:10px 12px;border-radius:14px;margin:8px 0;white-space:pre-wrap;line-height:1.5;font-size:14px}.bot{background:#f4e8ed;margin-right:auto}.user{background:#8e3155;color:white;margin-left:auto}.composer{display:flex;padding:10px;border-top:1px solid #eee;gap:8px}.composer input{min-width:0;flex:1;border:1px solid #ddd;border-radius:22px;padding:12px}.composer button{border:0;border-radius:22px;background:var(--berry);color:#fff;padding:0 16px}footer{padding:28px;text-align:center;color:#806d75;font-size:13px}
+</style></head>
+<body>
+<header><strong>NASIMA BAKEHOUSE</strong><span>Freshly baked with care</span></header>
+<main><span class="tag">Baked with Love, Crafted with Passion</span><h1>একটু মিষ্টি হোক আপনার বিশেষ দিন</h1><p>জন্মদিন, উদ্‌যাপন কিংবা প্রিয়জনের জন্য কেক সম্পর্কে জানতে নিচের <b>NASIMA AI</b>-এর সঙ্গে কথা বলুন।</p></main>
+<footer>NASIMA BAKEHOUSE · কেকের অর্ডার ও মূল্য নিশ্চিত করতে আমাদের সঙ্গে কথা বলুন।</footer>
+<section id="chat" aria-label="NASIMA AI live chat">
+<div class="chat-head">NASIMA AI <small>কেক সম্পর্কে জানতে মেসেজ করুন</small></div>
+<div class="messages" id="messages"><div class="msg bot">আসসালামু আলাইকুম! NASIMA BAKEHOUSE-এ স্বাগতম। কী ধরনের কেক খুঁজছেন?</div></div>
+<form class="composer" id="form"><input id="input" maxlength="1000" placeholder="আপনার মেসেজ লিখুন..." autocomplete="off" required><button>পাঠান</button></form>
+</section>
+<button id="chat-launch" aria-expanded="false">💬 NASIMA AI</button>
+<script>
+const apiBase = ""; // Set to the deployed Cloudflare Worker URL if the API is hosted separately.
+const panel=document.getElementById("chat"),launch=document.getElementById("chat-launch"),form=document.getElementById("form"),input=document.getElementById("input"),list=document.getElementById("messages");
+const history=[];
+launch.onclick=()=>{panel.classList.toggle("open");launch.setAttribute("aria-expanded",panel.classList.contains("open"));if(panel.classList.contains("open"))input.focus()};
+function add(text,who){const el=document.createElement("div");el.className="msg "+who;el.textContent=text;list.appendChild(el);list.scrollTop=list.scrollHeight}
+form.addEventListener("submit",async e=>{e.preventDefault();const text=input.value.trim();if(!text)return;input.value="";add(text,"user");history.push({role:"user",content:text});const wait=document.createElement("div");wait.className="msg bot";wait.textContent="একটু অপেক্ষা করুন...";list.appendChild(wait);list.scrollTop=list.scrollHeight;
+try{const r=await fetch(apiBase+"/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:history})});const d=await r.json();wait.remove();const answer=d.reply||d.error||"দুঃখিত, পরে আবার চেষ্টা করুন।";add(answer,"bot");history.push({role:"assistant",content:answer})}catch{wait.remove();add("সংযোগ করা যাচ্ছে না। অনুগ্রহ করে পরে আবার চেষ্টা করুন।","bot")}});
+</script></body></html>
