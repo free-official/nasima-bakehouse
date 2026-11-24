@@ -273,6 +273,35 @@ footer{background:#17110f}
  #ordering .steps{gap:12px}
  #policies .policy-grid{gap:11px}
 }
+
+/* Click-to-explore flavour collections */
+.price-card.flavour-card{cursor:pointer;text-align:left;font:inherit}
+.price-card.flavour-card:focus-visible{outline:3px solid #b69a62;outline-offset:4px}
+.price-card.flavour-card:after{content:"VIEW 10+ DESIGNS  ↗";position:absolute;left:27px;bottom:13px;font:700 9px var(--sans);letter-spacing:.13em;color:var(--flavour-text,#765328);opacity:.78}
+.price-card.flavour-card{padding-bottom:39px}
+.flavour-gallery-panel{margin:30px 0 24px;padding:28px;border:1px solid #e4d1b8;border-radius:20px;background:linear-gradient(145deg,#fffaf1,#f1e2cf);box-shadow:0 18px 48px #43231616;scroll-margin-top:105px}
+.flavour-gallery-panel[hidden]{display:none}
+.flavour-gallery-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}
+.flavour-gallery-head h3{font:500 clamp(25px,3vw,36px) var(--serif);color:#38231d;margin:9px 0}
+.flavour-gallery-head p{font-size:12px;line-height:1.8;color:#78685d;max-width:620px;margin:0}
+.flavour-gallery-close{width:42px;height:42px;flex:0 0 42px;border:1px solid #d6c1a6;border-radius:50%;background:#fff9ef;color:#43291f;font-size:27px;cursor:pointer}
+.flavour-gallery-close:hover{background:#43291f;color:white}
+.flavour-gallery-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px}
+.flavour-design-card{position:relative;overflow:hidden;aspect-ratio: .82;border-radius:12px;background:#dfcbb7;box-shadow:0 7px 18px #43231618}
+.flavour-design-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s}
+.flavour-design-card:hover img{transform:scale(1.07)}
+.flavour-design-card:after{content:"";position:absolute;inset:42% 0 0;background:linear-gradient(transparent,#1c100edb);pointer-events:none}
+.flavour-design-name{position:absolute;z-index:1;left:11px;right:8px;bottom:48px;color:#fff;font:500 14px var(--serif);text-shadow:0 1px 5px #0008}
+.flavour-design-order{position:absolute;z-index:2;left:9px;bottom:9px;border:0;border-radius:24px;background:#fff4e4;color:#39231b;padding:9px 12px;font:700 9px var(--sans);letter-spacing:.08em;cursor:pointer}
+.flavour-design-order:hover{background:#c49a62}
+.flavour-gallery-panel[data-theme="Red Velvet"]{background:linear-gradient(145deg,#fff0f1,#ead0d4);border-color:#d9a3ad}
+.flavour-gallery-panel[data-theme="Chocolate"],.flavour-gallery-panel[data-theme="Black Forest"]{background:linear-gradient(145deg,#f6e9e3,#dfc5b9);border-color:#c6a194}
+.flavour-gallery-panel[data-theme="Strawberry"]{background:linear-gradient(145deg,#fff1f5,#f3d4df);border-color:#e8b9ca}
+.flavour-gallery-panel[data-theme="Caramel / Butterscotch"]{background:linear-gradient(145deg,#fff6e8,#efd6b3);border-color:#dfbd8d}
+.flavour-gallery-panel[data-theme="Coffee / Mocha"]{background:linear-gradient(145deg,#f4ece5,#ddc9b9);border-color:#c8ad99}
+@media(max-width:900px){.flavour-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.flavour-gallery-panel{padding:17px;margin-top:22px}.flavour-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.flavour-design-name{font-size:12px;left:8px;bottom:44px}.flavour-design-order{left:7px;bottom:7px;padding:8px 9px;font-size:8px}.price-card.flavour-card:after{left:21px;font-size:8px}}
+
 </style></head>
 <body>
 <div class="announcement">Handcrafted with care · Made for your sweetest moments</div>
@@ -280,7 +309,15 @@ footer{background:#17110f}
 <main>
 <section class="hero" id="home"><div class="hero-copy"><div class="eyebrow">A BEAUTIFUL CAKE FOR EVERY OCCASION</div><h1>Make every moment<br><span>a little sweeter.</span></h1><p>Beautiful home-baked cakes, prepared with care for birthdays, celebrations and the people you love. At NASIMA BAKEHOUSE, every order is personal: choose your flavour, share your design idea and let us help you plan a cake made especially for your moment.</p><div class="hero-actions"><a class="btn" href="#designs">EXPLORE CAKE DESIGNS</a><button class="btn light" onclick="openChat()">CHAT WITH NASIMA AI</button></div></div><div class="hero-image" role="img" aria-label="Beautiful celebration cake"></div></section>
 <div class="strip"><span>Home-baked with care</span><span>Made to order</span><span>Personalised designs</span></div>
-<section class="section" id="menu"><div class="section-head"><div class="kicker">THE CAKE MENU</div><h2>Simple flavours. Sweet memories.</h2><p>Our starting prices are listed below. Final pricing is confirmed by the bakery based on cake size, design and order details.</p></div><div class="price-grid"><article class="price-card"><div><h3>Classic Vanilla</h3><p>Light, timeless vanilla flavour.</p></div><div class="price">৳600<small>PER POUND</small></div></article><article class="price-card"><div><h3>Rich Chocolate</h3><p>A delicious choice for chocolate lovers.</p></div><div class="price">৳700<small>PER POUND</small></div></article><article class="price-card"><div><h3>Red Velvet</h3><p>Soft red velvet-style celebration cake.</p></div><div class="price">৳800<small>PER POUND</small></div></article><article class="price-card"><div><h3>Strawberry</h3><p>Strawberry-inspired cake flavour.</p></div><div class="price">৳800<small>PER POUND</small></div></article><article class="price-card"><div><h3>Black Forest</h3><p>Classic chocolate and cherry-inspired style.</p></div><div class="price">৳850<small>PER POUND</small></div></article><article class="price-card"><div><h3>Caramel / Butterscotch</h3><p>Caramel-inspired sweet flavour.</p></div><div class="price">৳900<small>PER POUND</small></div></article><article class="price-card"><div><h3>Coffee / Mocha</h3><p>Coffee-inspired cake flavour.</p></div><div class="price">৳800<small>PER POUND</small></div></article></div><div class="note"><b>Custom & Special Designs:</b> Listed flavour prices are per pound. Custom design charges may vary by size and complexity; share your reference photo with NASIMA AI to request a personalised quotation.</div></section>
+<section class="section" id="menu"><div class="section-head"><div class="kicker">THE CAKE MENU</div><h2>Simple flavours. Sweet memories.</h2><p>Our starting prices are listed below. Final pricing is confirmed by the bakery based on cake size, design and order details.</p></div><div class="price-grid"><article class="price-card flavour-card" data-flavour="Vanilla" role="button" tabindex="0" aria-label="View Vanilla cake designs"><div><h3>Classic Vanilla</h3><p>Light, timeless vanilla flavour.</p></div><div class="price">৳600<small>PER POUND</small></div></article><article class="price-card flavour-card" data-flavour="Chocolate" role="button" tabindex="0" aria-label="View Chocolate cake designs"><div><h3>Rich Chocolate</h3><p>A delicious choice for chocolate lovers.</p></div><div class="price">৳700<small>PER POUND</small></div></article><article class="price-card flavour-card" data-flavour="Red Velvet" role="button" tabindex="0" aria-label="View Red Velvet cake designs"><div><h3>Red Velvet</h3><p>Soft red velvet-style celebration cake.</p></div><div class="price">৳800<small>PER POUND</small></div></article><article class="price-card flavour-card" data-flavour="Strawberry" role="button" tabindex="0" aria-label="View Strawberry cake designs"><div><h3>Strawberry</h3><p>Strawberry-inspired cake flavour.</p></div><div class="price">৳800<small>PER POUND</small></div></article><article class="price-card flavour-card" data-flavour="Black Forest" role="button" tabindex="0" aria-label="View Black Forest cake designs"><div><h3>Black Forest</h3><p>Classic chocolate and cherry-inspired style.</p></div><div class="price">৳850<small>PER POUND</small></div></article><article class="price-card flavour-card" data-flavour="Caramel / Butterscotch" role="button" tabindex="0" aria-label="View Caramel / Butterscotch cake designs"><div><h3>Caramel / Butterscotch</h3><p>Caramel-inspired sweet flavour.</p></div><div class="price">৳900<small>PER POUND</small></div></article><article class="price-card flavour-card" data-flavour="Coffee / Mocha" role="button" tabindex="0" aria-label="View Coffee / Mocha cake designs"><div><h3>Coffee / Mocha</h3><p>Coffee-inspired cake flavour.</p></div><div class="price">৳800<small>PER POUND</small></div></article></div>
+<div class="flavour-gallery-panel" id="flavour-gallery-panel" hidden aria-live="polite">
+ <div class="flavour-gallery-head">
+  <div><div class="kicker">EXPLORE THE COLLECTION</div><h3 id="flavour-gallery-title">Vanilla Cake Designs</h3><p>Choose a design you love. Each image is an inspiration reference; final details are confirmed by the bakery.</p></div>
+  <button type="button" class="flavour-gallery-close" onclick="closeFlavourGallery()" aria-label="Close cake designs">×</button>
+ </div>
+ <div class="flavour-gallery-grid" id="flavour-gallery-grid"></div>
+</div>
+<div class="note"><b>Custom & Special Designs:</b> Listed flavour prices are per pound. Custom design charges may vary by size and complexity; share your reference photo with NASIMA AI to request a personalised quotation.</div></section>
 <section class="gallery" id="designs"><div class="section"><div class="section-head"><div class="kicker">THE DESIGN GALLERY</div><h2>Find a design you love.</h2><p>Explore cake inspiration for birthdays, celebrations and special occasions. These images are design references; your final cake design and quotation will be confirmed with the bakery.</p></div><div class="gallery-grid" id="gallery"></div><div class="gallery-foot">Have a design in mind? Send a reference or describe it to NASIMA AI.</div></div></section>
 <section class="section"><div class="section-head"><div class="kicker">THE NASIMA EXPERIENCE</div><h2>A homemade touch in every celebration.</h2><p class="homemade-note"><strong>100% Homemade Cakes</strong><br>Made at home with care, love and attention to every detail.</p><p>NASIMA BAKEHOUSE is a home-based cake business. We prepare cakes with personal care and attention, bringing a thoughtful homemade touch to your special occasions.</p></div><div class="features"><div class="feature"><b>Home-baked, made with care</b><p>Every order is prepared as a personal home-baking project, with care given to the flavour, finish and details you request.</p></div><div class="feature"><b>Personal attention to your order</b><p>Tell us about your occasion and preferred design. We discuss your request with you and confirm what can be made.</p></div><div class="feature"><b>Quality-minded preparation</b><p>We care about making a cake that looks lovely and feels special to serve. Share your preferences so we can discuss the right option for your occasion.</p></div></div></section>
 <section class="section" id="ordering"><div class="section-head"><div class="kicker">A SIMPLE ORDER JOURNEY</div><h2>How to order your cake.</h2><p>Start a conversation and tell us what you are planning. The bakery will confirm the final details before accepting your order.</p></div><div class="steps"><div class="step"><strong>01</strong><h3>Choose your cake</h3><p>Select a flavour, pound size and preferred design or share a reference image.</p></div><div class="step"><strong>02</strong><h3>Share your details</h3><p>Tell us your name, contact number, required date, design notes and delivery or pickup preference.</p></div><div class="step"><strong>03</strong><h3>Get confirmation</h3><p>The bakery checks availability and confirms the final price and order arrangements with you.</p></div></div></section>
@@ -313,6 +350,46 @@ const designs=[\n["Red Velvet Cake","photo-1586788680434-30d324b2d46f"],["Strawb
 ["Birthday Celebration","photo-1578985545062-69928b1d9587"],["Elegant Floral Cake","photo-1563729784474-d77dbb933a9e"],["Chocolate Indulgence","photo-1602351447937-745cb720612f"],["Minimal White Cake","photo-1535141192574-5d4897c12636"],["Vintage Buttercream","photo-1559620192-032c4bc4674e"],["Pink Celebration","photo-1571115177098-24ec42ed204d"],["Classic Layer Cake","photo-1586985289688-ca3cf47d3e6e"],["Romantic Floral","photo-1464349095431-e9a21285b5f3"],["Sweet Party Cake","photo-1578985545062-69928b1d9587"],["Signature Chocolate","photo-1578985545062-69928b1d9587"],["Soft Pastel Design","photo-1563729784474-d77dbb933a9e"],["Celebration Special","photo-1535141192574-5d4897c12636"],["Modern Minimal","photo-1559620192-032c4bc4674e"],["Floral Garden","photo-1571115177098-24ec42ed204d"],["Creamy Layers","photo-1586985289688-ca3cf47d3e6e"],["Birthday Classic","photo-1464349095431-e9a21285b5f3"],["Chocolate Dream","photo-1602351447937-745cb720612f"],["Golden Occasion","photo-1563729784474-d77dbb933a9e"],["Pastel Delight","photo-1578985545062-69928b1d9587"],["Custom Masterpiece","photo-1563729784474-d77dbb933a9e"],["Celebration Bloom","photo-1535141192574-5d4897c12636"],["Sweet Moments","photo-1559620192-032c4bc4674e"],["Elegant Layers","photo-1571115177098-24ec42ed204d"],["Party Favourite","photo-1586985289688-ca3cf47d3e6e"],["Special Occasion","photo-1464349095431-e9a21285b5f3"],["Classic Vanilla","photo-1602351447937-745cb720612f"],["Chocolate Layers","photo-1535141192574-5d4897c12636"],["Pretty Pastels","photo-1578985545062-69928b1d9587"],["Floral Fantasy","photo-1563729784474-d77dbb933a9e"],["Made for You","photo-1535141192574-5d4897c12636"]
 ];
 document.getElementById("gallery").innerHTML=designs.map(([name,id])=>'<article class="cake-card"><img loading="lazy" src="https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=650&q=78" alt="'+name+' cake design"><div class="cake-label">'+name+'</div><button class="cake-order" type="button" data-cake="'+name+'" onclick="startCakeOrder(this.dataset.cake)">ORDER THIS CAKE</button></article>').join("");
+
+/* Individual flavour collections: ten design references per flavour */
+const flavourPhotoIds=[
+ "photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187",
+ "photo-1559620192-032c4bc4674e","photo-1563729784474-d77dbb933a9e",
+ "photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636",
+ "photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e",
+ "photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f"
+];
+const flavourCollections={
+ "Vanilla":["Classic Vanilla","Vanilla Buttercream","Ivory Pearl Cake","Vanilla Floral","Golden Vanilla","Minimal Cream Cake","Vanilla Birthday","Pastel Vanilla","Vanilla Layer Cake","Elegant Vanilla"],
+ "Chocolate":["Dark Chocolate","Chocolate Ganache","Chocolate Drip","Chocolate Truffle","Fudge Celebration","Chocolate Mousse","Chocolate Crunch","Rich Cocoa Layers","Chocolate Floral","Signature Chocolate"],
+ "Red Velvet":["Classic Red Velvet","Red Velvet Cream Cheese","Crimson Velvet","Red Velvet Drip","Velvet Rose Cake","Red Velvet Heart","Modern Red Velvet","Red Velvet Layer Cake","Velvet Celebration","Ruby Velvet"],
+ "Strawberry":["Fresh Strawberry","Strawberry Cream","Pink Berry Cake","Strawberry Drip","Strawberry Floral","Berry Delight","Strawberry Shortcake","Pink Celebration","Strawberry Layers","Sweet Berry"],
+ "Black Forest":["Classic Black Forest","Chocolate Cherry","Black Forest Gateau","Cherry Cream Cake","Dark Forest Layers","Black Forest Drip","Cherry Chocolate","Forest Celebration","Black Forest Floral","Signature Forest"],
+ "Caramel / Butterscotch":["Golden Caramel","Butterscotch Crunch","Caramel Drip","Salted Caramel","Golden Buttercream","Caramel Layer Cake","Toffee Delight","Caramel Floral","Butterscotch Celebration","Caramel Signature"],
+ "Coffee / Mocha":["Classic Mocha","Coffee Buttercream","Espresso Chocolate","Mocha Drip","Coffee Layer Cake","Cappuccino Cake","Mocha Floral","Coffee Cream","Dark Mocha","Signature Coffee"]
+};
+function showFlavourGallery(flavour){
+ const panel=document.getElementById("flavour-gallery-panel");
+ const grid=document.getElementById("flavour-gallery-grid");
+ const title=document.getElementById("flavour-gallery-title");
+ const names=flavourCollections[flavour];
+ if(!names)return;
+ panel.dataset.theme=flavour;
+ title.textContent=flavour+" Cake Designs";
+ grid.innerHTML=names.map((name,index)=>{
+  const photo=flavourPhotoIds[(index+(Object.keys(flavourCollections).indexOf(flavour)*2))%flavourPhotoIds.length];
+  const fullName=flavour+" — "+name;
+  return '<article class="flavour-design-card"><img loading="lazy" src="https://images.unsplash.com/'+photo+'?auto=format&fit=crop&w=650&q=82" alt="'+fullName+'"><div class="flavour-design-name">'+name+'</div><button type="button" class="flavour-design-order" data-design="'+fullName.replace(/"/g,"&quot;")+'" onclick="startCakeOrder(this.dataset.design)">SELECT DESIGN</button></article>';
+ }).join("");
+ panel.hidden=false;
+ panel.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function closeFlavourGallery(){document.getElementById("flavour-gallery-panel").hidden=true}
+document.querySelectorAll(".flavour-card").forEach(card=>{
+ card.addEventListener("click",()=>showFlavourGallery(card.dataset.flavour));
+ card.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();showFlavourGallery(card.dataset.flavour)}});
+});
+
 document.getElementById("year").textContent=new Date().getFullYear();
 const panel=document.getElementById("chat"),input=document.getElementById("input"),list=document.getElementById("messages"),form=document.getElementById("form"),history=[];
 function openChat(){panel.classList.add("open");document.getElementById("chat-launch").setAttribute("aria-expanded","true");input.focus()}
