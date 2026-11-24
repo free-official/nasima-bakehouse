@@ -277,7 +277,7 @@ footer{background:#17110f}
 /* Click-to-explore flavour collections */
 .price-card.flavour-card{cursor:pointer;text-align:left;font:inherit}
 .price-card.flavour-card:focus-visible{outline:3px solid #b69a62;outline-offset:4px}
-.price-card.flavour-card:after{content:"VIEW 10+ DESIGNS  ↗";position:absolute;left:27px;bottom:13px;font:700 9px var(--sans);letter-spacing:.13em;color:var(--flavour-text,#765328);opacity:.78}
+.price-card.flavour-card:after{content:"FIND THE DESIGN  ↗";position:absolute;left:27px;bottom:13px;font:700 9px var(--sans);letter-spacing:.13em;color:var(--flavour-text,#765328);opacity:.78}
 .price-card.flavour-card{padding-bottom:39px}
 .flavour-gallery-panel{margin:30px 0 24px;padding:28px;border:1px solid #e4d1b8;border-radius:20px;background:linear-gradient(145deg,#fffaf1,#f1e2cf);box-shadow:0 18px 48px #43231616;scroll-margin-top:105px}
 .flavour-gallery-panel[hidden]{display:none}
@@ -338,6 +338,12 @@ footer{background:#17110f}
 @media(max-width:620px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.price-card.flavour-card{min-height:158px;padding:18px 13px 43px;border-radius:12px}.price-card.flavour-card h3{font-size:19px}.price-card.flavour-card p{font-size:10px;line-height:1.4}.price-card.flavour-card .price{right:9px;top:9px;font-size:13px;padding:8px 9px}.price-card.flavour-card:after{left:13px;bottom:14px;font-size:7px;letter-spacing:.11em}.flavour-gallery-head{gap:10px}.flavour-gallery-head h3{font-size:25px}}
 @media(max-width:360px){.price-card.flavour-card h3{font-size:17px}.price-card.flavour-card{min-height:148px}}
 .cake-meta{position:absolute;z-index:2;left:15px;bottom:38px;color:#f1dfbd;font:700 9px var(--sans);letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 5px #0009}.cake-card img{background:#e8ddd0}.gallery .section-head p{max-width:620px;margin-left:auto;margin-right:auto}.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}.cake-card{border-radius:12px;box-shadow:0 9px 24px #1b130f12}.cake-card:after{inset:35% 0 0;background:linear-gradient(transparent,#000b)}@media(max-width:850px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cake-label{left:9px;bottom:56px;font-size:13px}.cake-meta{left:9px;bottom:37px;font-size:8px}.cake-order{left:9px;bottom:8px;padding:8px 9px;font-size:8px}}
+
+.flavour-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.flavour-filter{border:1px solid #d9c3a5;border-radius:30px;background:#fffaf1;color:#4b3024;padding:10px 14px;font:700 10px var(--sans);letter-spacing:.04em;cursor:pointer}
+.flavour-filter.active,.flavour-filter:hover{background:#4b3024;border-color:#4b3024;color:#fff8ed}
+.flavour-design-flavour{position:absolute;z-index:1;left:11px;right:8px;bottom:31px;color:#f3dfc5;font:600 9px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:560px){.flavour-filter{padding:9px 11px;font-size:9px}.flavour-design-flavour{left:8px;bottom:28px;font-size:8px}}
 </style></head>
 <body>
 <div class="announcement">Handcrafted with care · Made for your sweetest moments</div>
@@ -351,7 +357,7 @@ footer{background:#17110f}
   <div><div class="kicker">EXPLORE THE COLLECTION</div><h3 id="flavour-gallery-title">Vanilla Cake Designs</h3><p>Choose a design you love. Each image is an inspiration reference; final details are confirmed by the bakery.</p></div>
   <button type="button" class="flavour-gallery-close" onclick="closeFlavourGallery()" aria-label="Close cake designs">×</button>
  </div>
- <div class="flavour-gallery-grid" id="flavour-gallery-grid"></div>
+ <div class="flavour-filter-bar" id="flavour-filter-bar" aria-label="Filter cake designs"></div><div class="flavour-gallery-grid" id="flavour-gallery-grid"></div>
 </div>
 <div class="note"><b>Custom & Special Designs:</b> Listed flavour prices are per pound. Custom design charges may vary by size and complexity; share your reference photo with NASIMA AI to request a personalised quotation.</div></section>
 <section class="gallery" id="designs"><div class="section"><div class="section-head"><div class="kicker">THE DESIGN GALLERY</div><h2>Explore 21 signature cake designs.</h2><p>Explore 21 cake design inspirations across all seven flavours. Choose a style you like and send it directly to NASIMA AI; your final cake details and quotation will be confirmed by the bakery.</p></div><div class="gallery-grid" id="gallery"></div><div class="gallery-foot">Have a design in mind? Send a reference or describe it to NASIMA AI.</div></div></section>
@@ -426,30 +432,41 @@ const flavourCollections={
  "Caramel / Butterscotch":["Golden Caramel", "Butterscotch Crunch", "Caramel Drip"],
  "Coffee / Mocha":["Classic Mocha", "Coffee Cream", "Mocha Layers"]
 };
+const flavourFallbacks={
+ "Vanilla":"https://cadogifting.com/cdn/shop/products/VanillaCake.jpg?v=1643179229",
+ "Chocolate":"https://assets.winni.in/product/primary/2026/4/109502.jpeg?dpr=2&w=900",
+ "Red Velvet":"https://www.beverlyhillsbakery.com/imagechef/item-page-desktop/uploads/Red-Velvet-Cake-69e5e078d92b3.jpg",
+ "Strawberry":"https://cdn.shopaccino.com/joyful-treats/products/2024-aug-27-joyful-artisan-treats1187-147037073471950_l.jpg?v=704",
+ "Black Forest":"https://www.flurys.com/cdn/shop/products/BlackForestCake_2.jpg?v=1676363127&width=1000",
+ "Caramel / Butterscotch":"https://manyashomebaker.com/assets/images/cakes/butterscotch-cake.png",
+ "Coffee / Mocha":"https://images.squarespace-cdn.com/content/v1/5f789cbeaa3c2d3994d2216d/1626674508776-1KKFD5K2XE8Y5KAAH6GS/mocha%2Blayer%2Bcake1.jpg"
+};
+function renderFlavourGallery(filter){
+ const grid=document.getElementById("flavour-gallery-grid");
+ const bar=document.getElementById("flavour-filter-bar");
+ const allFlavours=Object.keys(flavourCollections);
+ const filters=["All 21 Designs",...allFlavours];
+ bar.innerHTML=filters.map((label,index)=>{
+  const value=index===0?"All":label;
+  return '<button type="button" class="flavour-filter'+(filter===value?' active':'')+'" data-filter="'+value.replace(/"/g,"&quot;")+'" aria-pressed="'+(filter===value?'true':'false')+'">'+label+'</button>';
+ }).join("");
+ bar.querySelectorAll("button").forEach(button=>button.addEventListener("click",()=>renderFlavourGallery(button.dataset.filter)));
+ const entries=allFlavours.flatMap(flavour=>flavourCollections[flavour].map((name,index)=>({flavour,name,photo:flavourImageSets[flavour][index]})));
+ const visible=filter==="All"?entries:entries.filter(item=>item.flavour===filter);
+ grid.innerHTML=visible.map(({flavour,name,photo})=>{
+  const imageUrl="https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=700&q=82";
+  const fallback=flavourFallbacks[flavour]||"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=650&q=82";
+  const fullName=flavour+" — "+name;
+  return '<article class="flavour-design-card"><img loading="lazy" decoding="async" src="'+imageUrl+'" onerror="this.onerror=null;this.src=\''+fallback+'\';" alt="'+fullName+' cake design"><div class="flavour-design-name">'+name+'</div><div class="flavour-design-flavour">'+flavour+'</div><button type="button" class="flavour-design-order" data-design="'+fullName.replace(/"/g,"&quot;")+'" onclick="startCakeOrder(this.dataset.design)">SELECT DESIGN</button></article>';
+ }).join("");
+}
 function showFlavourGallery(flavour){
  const panel=document.getElementById("flavour-gallery-panel");
- const grid=document.getElementById("flavour-gallery-grid");
  const title=document.getElementById("flavour-gallery-title");
- const names=flavourCollections[flavour];
- if(!names)return;
+ if(!flavourCollections[flavour])return;
  panel.dataset.theme=flavour;
- title.textContent=flavour+" Cake Designs";
- grid.innerHTML=names.map((name,index)=>{
-  const photo=flavourImageSets[flavour][index];
-  const flavourFallbacks={
-   "Vanilla":"https://cadogifting.com/cdn/shop/products/VanillaCake.jpg?v=1643179229",
-   "Chocolate":"https://assets.winni.in/product/primary/2026/4/109502.jpeg?dpr=2&w=900",
-   "Red Velvet":"https://www.beverlyhillsbakery.com/imagechef/item-page-desktop/uploads/Red-Velvet-Cake-69e5e078d92b3.jpg",
-   "Strawberry":"https://cdn.shopaccino.com/joyful-treats/products/2024-aug-27-joyful-artisan-treats1187-147037073471950_l.jpg?v=704",
-   "Black Forest":"https://www.flurys.com/cdn/shop/products/BlackForestCake_2.jpg?v=1676363127&width=1000",
-   "Caramel / Butterscotch":"https://manyashomebaker.com/assets/images/cakes/butterscotch-cake.png",
-   "Coffee / Mocha":"https://images.squarespace-cdn.com/content/v1/5f789cbeaa3c2d3994d2216d/1626674508776-1KKFD5K2XE8Y5KAAH6GS/mocha%2Blayer%2Bcake1.jpg"
-  };
-  const fallback=flavourFallbacks[flavour]||"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=650&q=82";
-  const imageUrl="https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=700&q=82";
-  const fullName=flavour+" — "+name;
-  return '<article class="flavour-design-card"><img loading="lazy" src="'+imageUrl+'" onerror="this.onerror=null;this.src=\''+fallback+'\';" alt="'+fullName+'"><div class="flavour-design-name">'+name+'</div><button type="button" class="flavour-design-order" data-design="'+fullName.replace(/"/g,"&quot;")+'" onclick="startCakeOrder(this.dataset.design)">SELECT DESIGN</button></article>';
- }).join("");
+ title.textContent="Find the Design — "+flavour;
+ renderFlavourGallery(flavour);
  panel.hidden=false;
  panel.scrollIntoView({behavior:"smooth",block:"start"});
 }
