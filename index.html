@@ -337,6 +337,7 @@ footer{background:#17110f}
 .flavour-design-order{font:700 9px/1 var(--sans);letter-spacing:.1em}
 @media(max-width:620px){.price-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.price-card.flavour-card{min-height:158px;padding:18px 13px 43px;border-radius:12px}.price-card.flavour-card h3{font-size:19px}.price-card.flavour-card p{font-size:10px;line-height:1.4}.price-card.flavour-card .price{right:9px;top:9px;font-size:13px;padding:8px 9px}.price-card.flavour-card:after{left:13px;bottom:14px;font-size:7px;letter-spacing:.11em}.flavour-gallery-head{gap:10px}.flavour-gallery-head h3{font-size:25px}}
 @media(max-width:360px){.price-card.flavour-card h3{font-size:17px}.price-card.flavour-card{min-height:148px}}
+.cake-meta{position:absolute;z-index:2;left:15px;bottom:38px;color:#f1dfbd;font:700 9px var(--sans);letter-spacing:.14em;text-transform:uppercase;text-shadow:0 1px 5px #0009}.cake-card img{background:#e8ddd0}.gallery .section-head p{max-width:620px;margin-left:auto;margin-right:auto}.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}.cake-card{border-radius:12px;box-shadow:0 9px 24px #1b130f12}.cake-card:after{inset:35% 0 0;background:linear-gradient(transparent,#000b)}@media(max-width:850px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:560px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cake-label{left:9px;bottom:56px;font-size:13px}.cake-meta{left:9px;bottom:37px;font-size:8px}.cake-order{left:9px;bottom:8px;padding:8px 9px;font-size:8px}}
 </style></head>
 <body>
 <div class="announcement">Handcrafted with care · Made for your sweetest moments</div>
@@ -353,7 +354,7 @@ footer{background:#17110f}
  <div class="flavour-gallery-grid" id="flavour-gallery-grid"></div>
 </div>
 <div class="note"><b>Custom & Special Designs:</b> Listed flavour prices are per pound. Custom design charges may vary by size and complexity; share your reference photo with NASIMA AI to request a personalised quotation.</div></section>
-<section class="gallery" id="designs"><div class="section"><div class="section-head"><div class="kicker">THE DESIGN GALLERY</div><h2>Find a design you love.</h2><p>Explore cake inspiration for birthdays, celebrations and special occasions. These images are design references; your final cake design and quotation will be confirmed with the bakery.</p></div><div class="gallery-grid" id="gallery"></div><div class="gallery-foot">Have a design in mind? Send a reference or describe it to NASIMA AI.</div></div></section>
+<section class="gallery" id="designs"><div class="section"><div class="section-head"><div class="kicker">THE DESIGN GALLERY</div><h2>Explore 21 signature cake designs.</h2><p>Explore 21 cake design inspirations across all seven flavours. Choose a style you like and send it directly to NASIMA AI; your final cake details and quotation will be confirmed by the bakery.</p></div><div class="gallery-grid" id="gallery"></div><div class="gallery-foot">Have a design in mind? Send a reference or describe it to NASIMA AI.</div></div></section>
 <section class="section"><div class="section-head"><div class="kicker">THE NASIMA EXPERIENCE</div><h2>A homemade touch in every celebration.</h2><p class="homemade-note"><strong>100% Homemade Cakes</strong><br>Made at home with care, love and attention to every detail.</p><p>NASIMA BAKEHOUSE is a home-based cake business. We prepare cakes with personal care and attention, bringing a thoughtful homemade touch to your special occasions.</p></div><div class="features"><div class="feature"><b>Home-baked, made with care</b><p>Every order is prepared as a personal home-baking project, with care given to the flavour, finish and details you request.</p></div><div class="feature"><b>Personal attention to your order</b><p>Tell us about your occasion and preferred design. We discuss your request with you and confirm what can be made.</p></div><div class="feature"><b>Quality-minded preparation</b><p>We care about making a cake that looks lovely and feels special to serve. Share your preferences so we can discuss the right option for your occasion.</p></div></div></section>
 <section class="section" id="ordering"><div class="section-head"><div class="kicker">A SIMPLE ORDER JOURNEY</div><h2>How to order your cake.</h2><p>Start a conversation and tell us what you are planning. The bakery will confirm the final details before accepting your order.</p></div><div class="steps"><div class="step"><strong>01</strong><h3>Choose your cake</h3><p>Select a flavour, pound size and preferred design or share a reference image.</p></div><div class="step"><strong>02</strong><h3>Share your details</h3><p>Tell us your name, contact number, required date, design notes and delivery or pickup preference.</p></div><div class="step"><strong>03</strong><h3>Get confirmation</h3><p>The bakery checks availability and confirms the final price and order arrangements with you.</p></div></div></section>
 <section class="section" id="policies"><div class="section-head"><div class="kicker">PLEASE READ</div><h2>Order information & policies.</h2><p>Clear information helps us understand your request and avoid confusion.</p></div><div class="policy-grid"><article class="policy"><h3>Pricing</h3><p>Listed prices are per pound for the stated flavours. Custom design charges vary by design and complexity. The bakery confirms the final quotation before accepting an order.</p></article><article class="policy"><h3>Order confirmation</h3><p>A chat or enquiry is not a confirmed order. Your order is accepted only after the bakery confirms availability, final price and arrangements.</p></article><article class="policy"><h3>Custom designs</h3><p>Share your preferred theme, wording, colours or reference photo. The bakery will review the request and advise whether it can be made and the applicable charge.</p></article><article class="policy"><h3>Timing & collection</h3><p>Please share your required date and time as early as possible. Preparation time, delivery availability and collection arrangements must be confirmed with the bakery.</p></article><article class="policy"><h3>Changes & cancellation</h3><p>Contact the bakery as soon as possible if you need to change or cancel a request. Any applicable terms will be confirmed when the order is discussed.</p></article><article class="policy"><h3>Privacy</h3><p>Contact and order details shared with us are used to respond to your enquiry and coordinate your cake order. Please do not share passwords, OTPs or payment card details.</p></article></div></section>
@@ -382,49 +383,48 @@ footer{background:#17110f}
 <section id="chat" aria-label="NASIMA AI chat"><div class="chat-head"><div class="chat-title">NASIMA AI <small>Your cake assistant · Ask us anything</small></div><button class="chat-close" type="button" onclick="closeChat()" aria-label="Close chat" title="Close chat">×</button></div><div class="messages" id="messages"><div class="msg bot">Hello! Welcome to NASIMA BAKEHOUSE. I can help with flavours, prices, cake sizes, custom designs and order enquiries. What would you like to know?</div></div><form class="composer" id="form"><input id="input" maxlength="1000" placeholder="Type your message..." autocomplete="off" required><button type="submit">SEND</button></form></section><button id="chat-launch" onclick="openChat()">✦ CHAT WITH NASIMA AI</button>
 <script>
 const designs=[
-["Red Velvet Cake","photo-1586788680434-30d324b2d46f"],["Strawberry Cake","photo-1565958011703-44f9829ba187"],["Caramel / Butterscotch Cake","photo-1559620192-032c4bc4674e"],["Coffee / Mocha Cake","photo-1578985545062-69928b1d9587"],
-["Birthday Celebration","photo-1578985545062-69928b1d9587"],["Elegant Floral Cake","photo-1563729784474-d77dbb933a9e"],["Chocolate Indulgence","photo-1602351447937-745cb720612f"],["Minimal White Cake","photo-1535141192574-5d4897c12636"],["Vintage Buttercream","photo-1559620192-032c4bc4674e"],["Pink Celebration","photo-1571115177098-24ec42ed204d"],["Classic Layer Cake","photo-1586985289688-ca3cf47d3e6e"],["Romantic Floral","photo-1464349095431-e9a21285b5f3"],["Sweet Party Cake","photo-1578985545062-69928b1d9587"],["Signature Chocolate","photo-1578985545062-69928b1d9587"],["Soft Pastel Design","photo-1563729784474-d77dbb933a9e"],["Celebration Special","photo-1535141192574-5d4897c12636"],["Modern Minimal","photo-1559620192-032c4bc4674e"],["Floral Garden","photo-1571115177098-24ec42ed204d"],["Creamy Layers","photo-1586985289688-ca3cf47d3e6e"],["Birthday Classic","photo-1464349095431-e9a21285b5f3"],["Chocolate Dream","photo-1602351447937-745cb720612f"],["Golden Occasion","photo-1563729784474-d77dbb933a9e"],["Pastel Delight","photo-1578985545062-69928b1d9587"],["Custom Masterpiece","photo-1563729784474-d77dbb933a9e"],["Celebration Bloom","photo-1535141192574-5d4897c12636"],["Sweet Moments","photo-1559620192-032c4bc4674e"],["Elegant Layers","photo-1571115177098-24ec42ed204d"],["Party Favourite","photo-1586985289688-ca3cf47d3e6e"],["Special Occasion","photo-1464349095431-e9a21285b5f3"],["Classic Vanilla","photo-1602351447937-745cb720612f"],["Chocolate Layers","photo-1535141192574-5d4897c12636"],["Pretty Pastels","photo-1578985545062-69928b1d9587"],["Floral Fantasy","photo-1563729784474-d77dbb933a9e"],["Made for You","photo-1535141192574-5d4897c12636"]
+ ["Vanilla Pearl", "photo-1604413191066-4dd20bedf486", "Vanilla"],
+ ["Classic Vanilla Cream", "photo-1692640848099-325af9b3f75f", "Vanilla"],
+ ["Vanilla Celebration", "photo-1514435390218-898a0e01517a", "Vanilla"],
+ ["Chocolate Ganache", "photo-1783276506988-1586270004ba", "Chocolate"],
+ ["Dark Chocolate Layers", "photo-1605807646983-377bc5a76493", "Chocolate"],
+ ["Chocolate Drip", "photo-1606983340126-99ab4feaa64a", "Chocolate"],
+ ["Red Velvet Classic", "photo-1614707269211-474b2510b3ad", "Red Velvet"],
+ ["Velvet Cream Layers", "photo-1560172797-c656dbab1a39", "Red Velvet"],
+ ["Ruby Velvet Celebration", "photo-1586788680434-30d324b2d46f", "Red Velvet"],
+ ["Fresh Strawberry", "photo-1761637604698-0f9e9d3278ee", "Strawberry"],
+ ["Strawberry Cream", "photo-1611293388250-580b08c4a145", "Strawberry"],
+ ["Berry Celebration", "photo-1627308595171-d1b5d67129c4", "Strawberry"],
+ ["Black Forest Classic", "photo-1518047601542-79f18c655718", "Black Forest"],
+ ["Cherry Chocolate", "photo-1723476355253-88309fec88a4", "Black Forest"],
+ ["Black Forest Layers", "photo-1702323213406-db43f134bd80", "Black Forest"],
+ ["Golden Caramel", "photo-1547414368-ac947d00b91d", "Caramel / Butterscotch"],
+ ["Butterscotch Crunch", "photo-1542826438-bd32f43d626f", "Caramel / Butterscotch"],
+ ["Caramel Drip", "photo-1702744382319-20efefc9dc19", "Caramel / Butterscotch"],
+ ["Classic Mocha", "photo-1697320777464-4db89a223861", "Coffee / Mocha"],
+ ["Coffee Cream", "photo-1657100335392-88a020278a7b", "Coffee / Mocha"],
+ ["Mocha Layers", "photo-1580745497986-76cbf3d259da", "Coffee / Mocha"]
 ];
-document.getElementById("gallery").innerHTML=designs.map(([name,id])=>'<article class="cake-card"><img loading="lazy" src="https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=650&q=78" alt="'+name+' cake design"><div class="cake-label">'+name+'</div><button class="cake-order" type="button" data-cake="'+name+'" onclick="startCakeOrder(this.dataset.cake)">ORDER THIS CAKE</button></article>').join("");
+document.getElementById("gallery").innerHTML=designs.map(([name,id,flavour])=>'<article class="cake-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=700&q=82" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=82\'" alt="'+flavour+' '+name+' cake design"><div class="cake-label">'+name+'</div><div class="cake-meta">'+flavour+'</div><button class="cake-order" type="button" data-cake="'+flavour+' — '+name+'" onclick="startCakeOrder(this.dataset.cake)">ORDER THIS CAKE</button></article>').join("");
 
 /* Individual flavour collections: ten design references per flavour */
 const flavourImageSets={
- "Vanilla":[
-  "https://www.fnp.com/images/pr/x/v20221130174940/vanilla-buttercream-cake-half-kg_1.jpg",
-  "photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f","photo-1565958011703-44f9829ba187"
- ],
- "Chocolate":[
-  "https://pekis.net/sites/default/files/styles/social_share_1200/public/2026-02/chocolate_cake_glossy_ganache.webp",
-  "photo-1571115177098-24ec42ed204d","photo-1535141192574-5d4897c12636","photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1563729784474-d77dbb933a9e","photo-1586788680434-30d324b2d46f","photo-1602351447937-745cb720612f"
- ],
- "Red Velvet":[
-  "https://elitesweets.ca/cdn/shop/files/Red-Velvet-Cake.jpg?v=1702670916&width=1000",
-  "photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f","photo-1565958011703-44f9829ba187"
- ],
- "Strawberry":[
-  "https://guardini.com/images/guardinispa/ricette/full/torta-alle-fragole.jpg",
-  "photo-1565958011703-44f9829ba187","photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f"
- ],
- "Black Forest":[
-  "https://cubebakery.co.nz/cdn/shop/files/MTXX_MH20240320_083529907_1_900x.jpg?v=1712356682",
-  "photo-1571115177098-24ec42ed204d","photo-1535141192574-5d4897c12636","photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1563729784474-d77dbb933a9e","photo-1586788680434-30d324b2d46f","photo-1602351447937-745cb720612f"
- ],
- "Caramel / Butterscotch":[
-  "https://d3cif2hu95s88v.cloudfront.net/live-site-2016/product-image/cakes2026/177444959810-600x600.jpg",
-  "photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f","photo-1565958011703-44f9829ba187"
- ],
- "Coffee / Mocha":[
-  "https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/mocha_cake.jpg",
-  "photo-1571115177098-24ec42ed204d","photo-1535141192574-5d4897c12636","photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1563729784474-d77dbb933a9e","photo-1586788680434-30d324b2d46f","photo-1602351447937-745cb720612f"
+ "Vanilla":["photo-1604413191066-4dd20bedf486", "photo-1692640848099-325af9b3f75f", "photo-1514435390218-898a0e01517a"],
+ "Chocolate":["photo-1783276506988-1586270004ba", "photo-1605807646983-377bc5a76493", "photo-1606983340126-99ab4feaa64a"],
+ "Red Velvet":["photo-1614707269211-474b2510b3ad", "photo-1560172797-c656dbab1a39", "photo-1586788680434-30d324b2d46f"],
+ "Strawberry":["photo-1761637604698-0f9e9d3278ee", "photo-1611293388250-580b08c4a145", "photo-1627308595171-d1b5d67129c4"],
+ "Black Forest":["photo-1518047601542-79f18c655718", "photo-1723476355253-88309fec88a4", "photo-1702323213406-db43f134bd80"],
+ "Caramel / Butterscotch":["photo-1547414368-ac947d00b91d", "photo-1542826438-bd32f43d626f", "photo-1702744382319-20efefc9dc19"],
+ "Coffee / Mocha":["photo-1697320777464-4db89a223861", "photo-1657100335392-88a020278a7b", "photo-1580745497986-76cbf3d259da"]
 };
 const flavourCollections={
- "Vanilla":["Classic Vanilla","Vanilla Buttercream","Ivory Pearl Cake","Vanilla Floral","Golden Vanilla","Minimal Cream Cake","Vanilla Birthday","Pastel Vanilla","Vanilla Layer Cake","Elegant Vanilla"],
- "Chocolate":["Dark Chocolate","Chocolate Ganache","Chocolate Drip","Chocolate Truffle","Fudge Celebration","Chocolate Mousse","Chocolate Crunch","Rich Cocoa Layers","Chocolate Floral","Signature Chocolate"],
- "Red Velvet":["Classic Red Velvet","Red Velvet Cream Cheese","Crimson Velvet","Red Velvet Drip","Velvet Rose Cake","Red Velvet Heart","Modern Red Velvet","Red Velvet Layer Cake","Velvet Celebration","Ruby Velvet"],
- "Strawberry":["Fresh Strawberry","Strawberry Cream","Pink Berry Cake","Strawberry Drip","Strawberry Floral","Berry Delight","Strawberry Shortcake","Pink Celebration","Strawberry Layers","Sweet Berry"],
- "Black Forest":["Classic Black Forest","Chocolate Cherry","Black Forest Gateau","Cherry Cream Cake","Dark Forest Layers","Black Forest Drip","Cherry Chocolate","Forest Celebration","Black Forest Floral","Signature Forest"],
- "Caramel / Butterscotch":["Golden Caramel","Butterscotch Crunch","Caramel Drip","Salted Caramel","Golden Buttercream","Caramel Layer Cake","Toffee Delight","Caramel Floral","Butterscotch Celebration","Caramel Signature"],
- "Coffee / Mocha":["Classic Mocha","Coffee Buttercream","Espresso Chocolate","Mocha Drip","Coffee Layer Cake","Cappuccino Cake","Mocha Floral","Coffee Cream","Dark Mocha","Signature Coffee"]
+ "Vanilla":["Vanilla Pearl", "Classic Vanilla Cream", "Vanilla Celebration"],
+ "Chocolate":["Chocolate Ganache", "Dark Chocolate Layers", "Chocolate Drip"],
+ "Red Velvet":["Red Velvet Classic", "Velvet Cream Layers", "Ruby Velvet Celebration"],
+ "Strawberry":["Fresh Strawberry", "Strawberry Cream", "Berry Celebration"],
+ "Black Forest":["Black Forest Classic", "Cherry Chocolate", "Black Forest Layers"],
+ "Caramel / Butterscotch":["Golden Caramel", "Butterscotch Crunch", "Caramel Drip"],
+ "Coffee / Mocha":["Classic Mocha", "Coffee Cream", "Mocha Layers"]
 };
 function showFlavourGallery(flavour){
  const panel=document.getElementById("flavour-gallery-panel");
@@ -446,7 +446,7 @@ function showFlavourGallery(flavour){
    "Coffee / Mocha":"https://images.squarespace-cdn.com/content/v1/5f789cbeaa3c2d3994d2216d/1626674508776-1KKFD5K2XE8Y5KAAH6GS/mocha%2Blayer%2Bcake1.jpg"
   };
   const fallback=flavourFallbacks[flavour]||"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=650&q=82";
-  const imageUrl=photo.startsWith("photo-")?"https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=650&q=82":photo;
+  const imageUrl="https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=700&q=82";
   const fullName=flavour+" — "+name;
   return '<article class="flavour-design-card"><img loading="lazy" src="'+imageUrl+'" onerror="this.onerror=null;this.src=\''+fallback+'\';" alt="'+fullName+'"><div class="flavour-design-name">'+name+'</div><button type="button" class="flavour-design-order" data-design="'+fullName.replace(/"/g,"&quot;")+'" onclick="startCakeOrder(this.dataset.design)">SELECT DESIGN</button></article>';
  }).join("");
