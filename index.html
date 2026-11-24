@@ -184,6 +184,95 @@ footer{background:#17110f}
  #menu + .gallery + .section .features .feature{padding:19px 17px}
 }
 
+
+/* Distinct visual identity for each homepage journey section.
+   Keep the original hero/home background unchanged. */
+#menu + .gallery + .section{
+ background:
+  linear-gradient(90deg,rgba(35,20,15,.97) 0%,rgba(43,25,19,.91) 48%,rgba(43,25,19,.28) 100%),
+  url('https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1800&q=88') right center/cover no-repeat;
+}
+#ordering{
+ max-width:none;
+ padding:94px max(5%,calc((100% - 1240px)/2));
+ color:#fff8ef;
+ background:
+  linear-gradient(100deg,rgba(35,22,17,.94),rgba(48,30,23,.82)),
+  url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1800&q=88') center/cover no-repeat;
+}
+#ordering .section-head{max-width:680px}
+#ordering .section-head h2{color:#fff8ef}
+#ordering .section-head p{color:#ead9c8}
+#ordering .section-head .kicker{color:#e8bd7e}
+#ordering .steps{gap:18px}
+#ordering .step{
+ border:1px solid rgba(255,229,194,.28);
+ border-top:3px solid #d8aa6c;
+ border-radius:15px;
+ background:rgba(38,23,18,.78);
+ box-shadow:0 12px 30px rgba(15,8,5,.22);
+ backdrop-filter:blur(5px);
+}
+#ordering .step strong{color:#e7bd82}
+#ordering .step h3{color:#fff2df}
+#ordering .step p{color:#ead9c8}
+
+#policies{
+ max-width:none;
+ padding:90px max(5%,calc((100% - 1240px)/2));
+ background:
+  linear-gradient(105deg,rgba(250,241,225,.97),rgba(247,232,210,.91)),
+  url('https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=1800&q=85') center/cover no-repeat;
+}
+#policies .policy{
+ background:rgba(255,253,247,.82);
+ border-color:#e4cfb2;
+ box-shadow:0 9px 25px rgba(88,55,28,.07);
+}
+#policies .policy h3{color:#68432e}
+#policies .policy p{color:#746052}
+
+#place-order{
+ max-width:none;
+ padding:96px max(5%,calc((100% - 1240px)/2));
+ color:#fff8ef;
+ background:
+  linear-gradient(100deg,rgba(36,20,15,.96) 0%,rgba(54,31,22,.88) 58%,rgba(54,31,22,.50) 100%),
+  url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1800&q=88') center/cover no-repeat;
+}
+#place-order .section-head h2{color:#fff8ef}
+#place-order .section-head p{color:#ead9c8}
+#place-order .section-head .kicker{color:#e8bd7e}
+#place-order .order-panel{
+ background:rgba(255,249,239,.96);
+ border:1px solid rgba(231,205,169,.85);
+ box-shadow:0 18px 48px rgba(18,9,5,.28);
+}
+#place-order .order-hint{color:#715c4a}
+
+@media(max-width:850px){
+ #menu + .gallery + .section{
+  background:
+   linear-gradient(100deg,rgba(35,20,15,.94),rgba(43,25,19,.78)),
+   url('https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1100&q=85') center/cover no-repeat;
+ }
+ #ordering,#policies,#place-order{padding:72px 6%}
+ #ordering{
+  background:
+   linear-gradient(100deg,rgba(35,22,17,.94),rgba(48,30,23,.84)),
+   url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1100&q=85') center/cover no-repeat;
+ }
+ #place-order{
+  background:
+   linear-gradient(100deg,rgba(36,20,15,.95),rgba(54,31,22,.84)),
+   url('https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1100&q=85') center/cover no-repeat;
+ }
+}
+@media(max-width:520px){
+ #ordering,#policies,#place-order{padding:64px 6%}
+ #ordering .steps{gap:12px}
+ #policies .policy-grid{gap:11px}
+}
 </style></head>
 <body>
 <div class="announcement">Handcrafted with care · Made for your sweetest moments</div>
