@@ -352,13 +352,35 @@ const designs=[\n["Red Velvet Cake","photo-1586788680434-30d324b2d46f"],["Strawb
 document.getElementById("gallery").innerHTML=designs.map(([name,id])=>'<article class="cake-card"><img loading="lazy" src="https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=650&q=78" alt="'+name+' cake design"><div class="cake-label">'+name+'</div><button class="cake-order" type="button" data-cake="'+name+'" onclick="startCakeOrder(this.dataset.cake)">ORDER THIS CAKE</button></article>').join("");
 
 /* Individual flavour collections: ten design references per flavour */
-const flavourPhotoIds=[
- "photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187",
- "photo-1559620192-032c4bc4674e","photo-1563729784474-d77dbb933a9e",
- "photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636",
- "photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e",
- "photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f"
-];
+const flavourImageSets={
+ "Vanilla":[
+  "https://www.fnp.com/images/pr/x/v20221130174940/vanilla-buttercream-cake-half-kg_1.jpg",
+  "photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f","photo-1565958011703-44f9829ba187"
+ ],
+ "Chocolate":[
+  "https://pekis.net/sites/default/files/styles/social_share_1200/public/2026-02/chocolate_cake_glossy_ganache.webp",
+  "photo-1571115177098-24ec42ed204d","photo-1535141192574-5d4897c12636","photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1563729784474-d77dbb933a9e","photo-1586788680434-30d324b2d46f","photo-1602351447937-745cb720612f"
+ ],
+ "Red Velvet":[
+  "https://elitesweets.ca/cdn/shop/files/Red-Velvet-Cake.jpg?v=1702670916&width=1000",
+  "photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f","photo-1565958011703-44f9829ba187"
+ ],
+ "Strawberry":[
+  "https://guardini.com/images/guardinispa/ricette/full/torta-alle-fragole.jpg",
+  "photo-1565958011703-44f9829ba187","photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f"
+ ],
+ "Black Forest":[
+  "https://cubebakery.co.nz/cdn/shop/files/MTXX_MH20240320_083529907_1_900x.jpg?v=1712356682",
+  "photo-1571115177098-24ec42ed204d","photo-1535141192574-5d4897c12636","photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1563729784474-d77dbb933a9e","photo-1586788680434-30d324b2d46f","photo-1602351447937-745cb720612f"
+ ],
+ "Caramel / Butterscotch":[
+  "https://d3cif2hu95s88v.cloudfront.net/live-site-2016/product-image/cakes2026/177444959810-600x600.jpg",
+  "photo-1578985545062-69928b1d9587","photo-1563729784474-d77dbb933a9e","photo-1602351447937-745cb720612f","photo-1535141192574-5d4897c12636","photo-1571115177098-24ec42ed204d","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1586788680434-30d324b2d46f","photo-1565958011703-44f9829ba187"
+ ],
+ "Coffee / Mocha":[
+  "https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/mocha_cake.jpg",
+  "photo-1571115177098-24ec42ed204d","photo-1535141192574-5d4897c12636","photo-1578985545062-69928b1d9587","photo-1565958011703-44f9829ba187","photo-1586985289688-ca3cf47d3e6e","photo-1464349095431-e9a21285b5f3","photo-1563729784474-d77dbb933a9e","photo-1586788680434-30d324b2d46f","photo-1602351447937-745cb720612f"
+};
 const flavourCollections={
  "Vanilla":["Classic Vanilla","Vanilla Buttercream","Ivory Pearl Cake","Vanilla Floral","Golden Vanilla","Minimal Cream Cake","Vanilla Birthday","Pastel Vanilla","Vanilla Layer Cake","Elegant Vanilla"],
  "Chocolate":["Dark Chocolate","Chocolate Ganache","Chocolate Drip","Chocolate Truffle","Fudge Celebration","Chocolate Mousse","Chocolate Crunch","Rich Cocoa Layers","Chocolate Floral","Signature Chocolate"],
@@ -377,9 +399,11 @@ function showFlavourGallery(flavour){
  panel.dataset.theme=flavour;
  title.textContent=flavour+" Cake Designs";
  grid.innerHTML=names.map((name,index)=>{
-  const photo=flavourPhotoIds[(index+(Object.keys(flavourCollections).indexOf(flavour)*2))%flavourPhotoIds.length];
+  const photo=flavourImageSets[flavour][index];
+  const fallback="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=650&q=82";
+  const imageUrl=photo.startsWith("photo-")?"https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=650&q=82":photo;
   const fullName=flavour+" — "+name;
-  return '<article class="flavour-design-card"><img loading="lazy" src="https://images.unsplash.com/'+photo+'?auto=format&fit=crop&w=650&q=82" alt="'+fullName+'"><div class="flavour-design-name">'+name+'</div><button type="button" class="flavour-design-order" data-design="'+fullName.replace(/"/g,"&quot;")+'" onclick="startCakeOrder(this.dataset.design)">SELECT DESIGN</button></article>';
+  return '<article class="flavour-design-card"><img loading="lazy" src="'+imageUrl+'" onerror="this.onerror=null;this.src=\''+fallback+'\';" alt="'+fullName+'"><div class="flavour-design-name">'+name+'</div><button type="button" class="flavour-design-order" data-design="'+fullName.replace(/"/g,"&quot;")+'" onclick="startCakeOrder(this.dataset.design)">SELECT DESIGN</button></article>';
  }).join("");
  panel.hidden=false;
  panel.scrollIntoView({behavior:"smooth",block:"start"});
