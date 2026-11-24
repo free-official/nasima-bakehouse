@@ -303,6 +303,18 @@ footer{background:#17110f}
 @media(max-width:560px){.flavour-gallery-panel{padding:17px;margin-top:22px}.flavour-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.flavour-design-name{font-size:12px;left:8px;bottom:44px}.flavour-design-order{left:7px;bottom:7px;padding:8px 9px;font-size:8px}.price-card.flavour-card:after{left:21px;font-size:8px}}
 
 
+
+/* Clear, image-first flavour gallery polish */
+.flavour-gallery-panel{background:linear-gradient(145deg,#fffaf1,#f0dfca);border:1px solid #dfc8aa}
+.flavour-gallery-head{align-items:center}
+.flavour-gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.flavour-design-card{aspect-ratio: .9;border:1px solid #ffffffb8;box-shadow:0 10px 25px #43231620}
+.flavour-design-card img{background:linear-gradient(135deg,#ead8c2,#f8efe3)}
+.flavour-design-order{min-height:34px}
+.flavour-design-order:focus-visible,.flavour-gallery-close:focus-visible{outline:3px solid #b69a62;outline-offset:3px}
+@media(max-width:900px){.flavour-gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.flavour-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.flavour-design-card{aspect-ratio:.82}}
+
 /* Refined flavour selector typography and image-led cards */
 .price-grid{align-items:stretch;gap:18px}
 .price-card.flavour-card{position:relative;isolation:isolate;min-height:176px;padding:26px 25px 48px;border:1px solid #e8dfd3;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:12px;background:#241914;color:#fff;box-shadow:0 12px 28px #24191412;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
@@ -424,7 +436,16 @@ function showFlavourGallery(flavour){
  title.textContent=flavour+" Cake Designs";
  grid.innerHTML=names.map((name,index)=>{
   const photo=flavourImageSets[flavour][index];
-  const fallback="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=650&q=82";
+  const flavourFallbacks={
+   "Vanilla":"https://cadogifting.com/cdn/shop/products/VanillaCake.jpg?v=1643179229",
+   "Chocolate":"https://assets.winni.in/product/primary/2026/4/109502.jpeg?dpr=2&w=900",
+   "Red Velvet":"https://www.beverlyhillsbakery.com/imagechef/item-page-desktop/uploads/Red-Velvet-Cake-69e5e078d92b3.jpg",
+   "Strawberry":"https://cdn.shopaccino.com/joyful-treats/products/2024-aug-27-joyful-artisan-treats1187-147037073471950_l.jpg?v=704",
+   "Black Forest":"https://www.flurys.com/cdn/shop/products/BlackForestCake_2.jpg?v=1676363127&width=1000",
+   "Caramel / Butterscotch":"https://manyashomebaker.com/assets/images/cakes/butterscotch-cake.png",
+   "Coffee / Mocha":"https://images.squarespace-cdn.com/content/v1/5f789cbeaa3c2d3994d2216d/1626674508776-1KKFD5K2XE8Y5KAAH6GS/mocha%2Blayer%2Bcake1.jpg"
+  };
+  const fallback=flavourFallbacks[flavour]||"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=650&q=82";
   const imageUrl=photo.startsWith("photo-")?"https://images.unsplash.com/"+photo+"?auto=format&fit=crop&w=650&q=82":photo;
   const fullName=flavour+" — "+name;
   return '<article class="flavour-design-card"><img loading="lazy" src="'+imageUrl+'" onerror="this.onerror=null;this.src=\''+fallback+'\';" alt="'+fullName+'"><div class="flavour-design-name">'+name+'</div><button type="button" class="flavour-design-order" data-design="'+fullName.replace(/"/g,"&quot;")+'" onclick="startCakeOrder(this.dataset.design)">SELECT DESIGN</button></article>';
