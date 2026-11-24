@@ -111,6 +111,44 @@ footer{background:#17110f}
 .chat-order-action{border-radius:8px;background:linear-gradient(100deg,#e8c990,#c49a62)}
 @media(max-width:520px){.price-card{border-radius:13px;padding:21px}.price-card h3{font-size:22px}}
 
+
+/* Homemade touch section: warm cake-photo backdrop */
+#menu + .gallery + .section{
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ background:
+ linear-gradient(90deg,rgba(255,250,240,.96),rgba(255,247,233,.91)),
+ url('https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=1800&q=85') center/cover fixed;
+}
+#menu + .gallery + .section:before{
+ content:"";
+ position:absolute;z-index:-1;inset:0;
+ background:radial-gradient(ellipse at 8% 20%,rgba(219,174,119,.22),transparent 42%),radial-gradient(ellipse at 92% 80%,rgba(156,91,73,.14),transparent 40%);
+ pointer-events:none;
+}
+#menu + .gallery + .section .section-head,
+#menu + .gallery + .section .features{position:relative}
+#menu + .gallery + .section .section-head{
+ padding:30px 24px;
+ border:1px solid rgba(181,139,91,.22);
+ border-radius:18px;
+ background:rgba(255,252,245,.76);
+ backdrop-filter:blur(5px);
+}
+#menu + .gallery + .section .features .feature{
+ padding:22px 20px;
+ border:1px solid rgba(181,139,91,.24);
+ border-top:3px solid #bd925d;
+ border-radius:13px;
+ background:rgba(255,251,243,.88);
+ box-shadow:0 10px 28px rgba(69,39,22,.08);
+}
+#menu + .gallery + .section .homemade-note{color:#80583b}
+@media(max-width:850px){
+ #menu + .gallery + .section{background-attachment:scroll}
+}
+
 </style></head>
 <body>
 <div class="announcement">Handcrafted with care · Made for your sweetest moments</div>
