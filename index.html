@@ -59,7 +59,59 @@ body:before{content:"";position:fixed;z-index:1000;top:0;left:0;width:100%;heigh
 
 .brand-lockup{display:flex;align-items:center;gap:12px}.brand-mark{width:43px;height:43px;display:grid;place-items:center;border:1px solid #b69a62;color:#b69a62;transform:rotate(-3deg)}.brand-mark svg{width:34px;height:34px}.brand-lockup .logo{font-size:19px}.footer-brand{display:flex;align-items:center;gap:12px}.footer-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid #b69a62;color:#b69a62;font:600 22px var(--serif)}.footer-logo{font:600 15px var(--serif);letter-spacing:.15em;color:white}
 @media(max-width:520px){.brand-mark{width:36px;height:36px}.brand-mark svg{width:29px;height:29px}.brand-lockup .logo{font-size:14px}.brand-lockup .logo small{font-size:7px}}
- .chat-order-action{display:block;margin:10px 14px;padding:13px 15px;background:#b69a62;color:#111;text-align:center;font-size:12px;font-weight:700;letter-spacing:.04em;border:1px solid #a88a50}</style></head>
+ .chat-order-action{display:block;margin:10px 14px;padding:13px 15px;background:#b69a62;color:#111;text-align:center;font-size:12px;font-weight:700;letter-spacing:.04em;border:1px solid #a88a50}
+/* 2026 flavour-led premium refresh */
+:root{--vanilla:#f4e8c9;--chocolate:#4b211d;--velvet:#762c43;--berry:#d96f91;--caramel:#bd8247;--mocha:#76513d;--cream:#fbf5e9}
+body{background:#fffdf9}
+.announcement{background:linear-gradient(100deg,#251714,#56342b 48%,#251714);color:#f7ead5}
+header{background:rgba(255,253,249,.94);border-bottom-color:#eadfce}
+.logo small{color:#a8793d}
+.hero{background:radial-gradient(ellipse at 15% 85%,#68402d 0,transparent 42%),linear-gradient(120deg,#211714,#38251f 60%,#171211)}
+.hero h1 span{background:linear-gradient(90deg,#f0d7a2,#c69a61,#f7e8c8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-image{background-image:linear-gradient(90deg,#211714 0%,transparent 32%),url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1300&q=90')}
+.strip{background:linear-gradient(90deg,#fffaf0,#f7eddd,#fffaf0);border-color:#eadfce;color:#654d3b}
+.section-head h2{color:#34231e}
+.price-grid{gap:17px}
+.price-card{position:relative;isolation:isolate;overflow:hidden;min-height:132px;border:1px solid #eadcc8;border-radius:16px;padding:25px 27px;background:linear-gradient(135deg,#fffdf8,#f8f0e3);box-shadow:0 8px 24px #5c35100b;transition:transform .28s,box-shadow .28s,border-color .28s}
+.price-card:before{content:"";position:absolute;z-index:-1;right:-28px;top:-42px;width:145px;height:145px;border-radius:50%;background:var(--flavour-glow,#ead8b7);opacity:.48;filter:blur(1px)}
+.price-card:after{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:0 5px 5px 0;background:var(--flavour-accent,#b69a62)}
+.price-card:hover{transform:translateY(-5px);box-shadow:0 15px 32px #56351b18;border-color:var(--flavour-accent,#b69a62)}
+.price-card h3{color:var(--flavour-text,#493126);font-size:24px}
+.price-card p{color:#78685d}
+.price{color:var(--flavour-text,#493126);font-size:30px}
+.price small{letter-spacing:.16em;color:#88796c}
+.price-card:nth-child(1){--flavour-accent:#c69b52;--flavour-glow:#f2dfad;--flavour-text:#765328;background:linear-gradient(135deg,#fffaf0,#f4e8cb)}
+.price-card:nth-child(2){--flavour-accent:#57302a;--flavour-glow:#c9a094;--flavour-text:#51251f;background:linear-gradient(135deg,#f8eeeb,#ead5cf)}
+.price-card:nth-child(3){--flavour-accent:#a43e5d;--flavour-glow:#e7a9b9;--flavour-text:#792a43;background:linear-gradient(135deg,#fff1f3,#f3dce2)}
+.price-card:nth-child(4){--flavour-accent:#d76d91;--flavour-glow:#f5c5d5;--flavour-text:#a34163;background:linear-gradient(135deg,#fff4f7,#fbe2e9)}
+.price-card:nth-child(5){--flavour-accent:#4c2925;--flavour-glow:#b58a7b;--flavour-text:#4d2823;background:linear-gradient(135deg,#f6eeeb,#e7d4ce)}
+.price-card:nth-child(6){--flavour-accent:#bd8247;--flavour-glow:#f0c98c;--flavour-text:#895528;background:linear-gradient(135deg,#fff7eb,#f5e2c7)}
+.price-card:nth-child(7){--flavour-accent:#87614c;--flavour-glow:#d9bda7;--flavour-text:#654331;background:linear-gradient(135deg,#f8f0e9,#e9d9ca)}
+.note{border:1px solid #ead9c1;border-radius:12px;background:linear-gradient(110deg,#fbf3e5,#f5e9d5);color:#634c39}
+.gallery{background:radial-gradient(ellipse at 10% 10%,#f5e2d9 0,transparent 38%),linear-gradient(145deg,#fbf4e9,#f4eadb 55%,#fff8ef)}
+.cake-card{border-radius:14px;box-shadow:0 8px 24px #43231618;outline:1px solid #fff9}
+.cake-card img{filter:saturate(1.06) contrast(1.02)}
+.cake-card:after{background:linear-gradient(transparent 35%,#21130fd9)}
+.cake-order{border-radius:30px;background:#fff8ed;color:#503329;box-shadow:0 3px 12px #0002}
+.cake-order:hover{background:#c49a62;color:#1d1511}
+.features .feature{border-top:2px solid #d9c3a5}
+.step{border:1px solid #eadcc8;border-radius:14px;background:linear-gradient(145deg,#fffaf1,#f4e8d8)}
+.policy{border:1px solid #eadcc8;border-radius:12px;background:linear-gradient(145deg,#fffdf8,#faf3e9)}
+.order-panel{border:1px solid #e6d4bb;border-radius:16px;background:linear-gradient(145deg,#fffaf0,#f3e7d6);box-shadow:0 12px 30px #56351b0c}
+.order-form input,.order-form select,.order-form textarea{border-radius:8px;border-color:#e4d4c0}
+.order-form input:focus,.order-form select:focus,.order-form textarea:focus{outline:2px solid #c49a62;outline-offset:1px}
+.contact{background:radial-gradient(ellipse at 90% 20%,#63402e 0,transparent 38%),linear-gradient(120deg,#211714,#35231d)}
+footer{background:#17110f}
+#chat-launch{border-radius:30px;background:linear-gradient(120deg,#e6c58e,#bd9254);color:#251911}
+#chat{border-radius:16px;overflow:hidden;border-color:#e6d7c4}
+.chat-head{background:linear-gradient(110deg,#261915,#56352a)}
+.messages{background:#fcf6ed}
+.bot{background:#f1e6d7;border-radius:13px 13px 13px 3px}
+.user{background:#4a2b22;border-radius:13px 13px 3px 13px}
+.chat-order-action{border-radius:8px;background:linear-gradient(100deg,#e8c990,#c49a62)}
+@media(max-width:520px){.price-card{border-radius:13px;padding:21px}.price-card h3{font-size:22px}}
+
+</style></head>
 <body>
 <div class="announcement">Handcrafted with care · Made for your sweetest moments</div>
 <header><a class="brand-lockup" href="#home" aria-label="NASIMA BAKEHOUSE home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M13 51V13h8l22 26V13h8v38h-8L21 25v26z" fill="none" stroke="currentColor" stroke-width="4.2" stroke-linejoin="round"/><path d="M8 56h48" stroke="#b69a62" stroke-width="2"/></svg></span><span class="logo">NASIMA BAKEHOUSE<small>BAKED WITH LOVE · CRAFTED WITH PASSION</small></span></a><nav><a href="#menu">CAKE MENU</a><a href="#designs">DESIGNS</a><a href="#ordering">HOW TO ORDER</a><a href="#contact">CONTACT</a><button class="btn" onclick="openChat()">ASK NASIMA AI</button></nav></header>
